@@ -1,0 +1,129 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-Sports-teams
+      author: vlad
+      changes:
+        - createTable:
+            tableName: Sports_teams
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: team_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sport_type
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: years_of_foundation
+                  type: int
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: create-table-Sports-teams-members
+      author: vlad
+      changes:
+        - createTable:
+            tableName: Sports_teams_members
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: id_team
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastname
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: firstname
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: patronymic
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: years_of_birth
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: position_team
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: add-foreign-key
+      author: vlad
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_Sports_teams_members_Sports_teams
+            baseTableName: Sports_teams_members
+            baseColumnNames: id_team
+            referencedTableName: Sports_teams
+            referencedColumnNames: id
+
+  - changeSet:
+      id: add-data-Sports-teams
+      author: vlad
+      changes:
+        - insert:
+            tableName: Sports_teams
+            columns:
+              - column:
+                  name: team_name
+                  value: 'Спартак'
+              - column:
+                  name: sport_type
+                  value: 'FOOTBALL'
+              - column:
+                  name: years_of_foundation
+                  value: 1990
+
+  - changeSet:
+      id: add-data-Sports-teams-members
+      author: vlad
+      changes:
+        - insert:
+            tableName: Sports_teams_members
+            columns:
+              - column:
+                  name: id_team
+                  value: 1
+              - column:
+                  name: lastname
+                  value: 'Житарь'
+              - column:
+                  name: firstname
+                  value: 'Владислав'
+              - column:
+                  name: patronymic
+                  value: 'Михайлович'
+              - column:
+                  name: years_of_birth
+                  value: 2003
+              - column:
+                  name: position_team
+                  value: 'STRIKER'
