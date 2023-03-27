@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table-Sports-teams
+      id: create-table-sports-teams
       author: vlad
       changes:
         - createTable:
-            tableName: Sports_teams
+            tableName: sports_teams
             columns:
               - column:
                   name: id
@@ -30,11 +30,11 @@ databaseChangeLog:
                     nullable: false
 
   - changeSet:
-      id: create-table-Sports-teams-members
+      id: create-table-sports-teams-members
       author: vlad
       changes:
         - createTable:
-            tableName: Sports_teams_members
+            tableName: sports_teams_members
             columns:
               - column:
                   name: id
@@ -47,7 +47,7 @@ databaseChangeLog:
                   name: id_team
                   type: int
                   constraints:
-                    nullable: false
+                    nullable: true
               - column:
                   name: lastname
                   type: varchar(50)
@@ -79,18 +79,18 @@ databaseChangeLog:
       author: vlad
       changes:
         - addForeignKeyConstraint:
-            constraintName: fk_Sports_teams_members_Sports_teams
-            baseTableName: Sports_teams_members
+            constraintName: fk_sports_teams_members_sports_teams
+            baseTableName: sports_teams_members
             baseColumnNames: id_team
-            referencedTableName: Sports_teams
+            referencedTableName: sports_teams
             referencedColumnNames: id
 
   - changeSet:
-      id: add-data-Sports-teams
+      id: add-data-sports-teams
       author: vlad
       changes:
         - insert:
-            tableName: Sports_teams
+            tableName: sports_teams
             columns:
               - column:
                   name: team_name
@@ -103,11 +103,11 @@ databaseChangeLog:
                   value: 1990
 
   - changeSet:
-      id: add-data-Sports-teams-members
+      id: add-data-sports-teams-members
       author: vlad
       changes:
         - insert:
-            tableName: Sports_teams_members
+            tableName: sports_teams_members
             columns:
               - column:
                   name: id_team

@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Sports_teams_members")
+@Table(name = "sports_teams_members")
 @EqualsAndHashCode
 public class TeamMembers {
     @Id
@@ -16,7 +16,7 @@ public class TeamMembers {
     @JsonIgnore
     private int id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_team", nullable = false)
+    @JoinColumn(name = "id_team", nullable = true)
     @JsonIgnore
     private Team team;
     @Basic

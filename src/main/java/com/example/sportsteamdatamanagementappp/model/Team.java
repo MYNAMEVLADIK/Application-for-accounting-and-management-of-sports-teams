@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Sports_teams")
+@Table(name = "sports_teams")
 @EqualsAndHashCode
 public class Team {
     @Id
@@ -28,7 +28,7 @@ public class Team {
     @Column(name = "years_of_foundation", nullable = false)
     private Integer yearsOfFoundation;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TeamMembers> teamMembers;
 
     public Team() {
